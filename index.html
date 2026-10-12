@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forgive Me? 💗</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg,#ffc6dc,#d9c7ff,#bde7ff);
+  font-family: "Trebuchet MS", sans-serif;
+  overflow-x: hidden;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  padding: 30px 23px;
+  border: 2px solid white;
+  border-radius: 28px;
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 15px 40px #a36a9c40;
+  text-align: center;
+  animation: appear 1s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.heart {
+  font-size: 48px;
+  animation: beat 1s infinite;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.15); }
+}
+
+h1 { color: #e75480; font-size: 29px; }
+
+.message {
+  background: #fff0f6;
+  color: #65485a;
+  padding: 19px;
+  border-radius: 18px;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+button {
+  border: 0;
+  border-radius: 30px;
+  padding: 13px 27px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+#yes {
+  background: #f56b9b;
+  color: white;
+}
+
+#no {
+  background: #eee4f4;
+  color: #745a7d;
+}
+
+button:hover { transform: scale(1.06); }
+
+#result {
+  color: #e75480;
+  font-weight: bold;
+  line-height: 1.7;
+  margin-top: 20px;
+}
+
+.float {
+  position: fixed;
+  bottom: -30px;
+  pointer-events: none;
+  animation: rise 5s linear forwards;
+}
+
+@keyframes rise {
+  to { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="heart">💗</div>
+  <h1>Will you forgive me?</h1>
+
+  <p class="message">
+    thank you for forgiving me po. i'm sorry for hurting you,
+    even when i didn't mean to baby, promise I'll be more
+    careful to my actions and words po hehe
+    <br><br>
+    i want to do better, speak more gently, and love you more
+    carefully. thank you, baby for staying, for listening,
+    and for giving me another chance, mwa!<3
+  </p>
+
+  <div class="buttons">
+    <button id="yes" onclick="forgive()">Yes 💗</button>
+    <button id="no" onclick="moveNo()">No 🙈</button>
+  </div>
+
+  <div id="result"></div>
+</div>
+
+<script>
+function forgive() {
+  document.getElementById("result").innerHTML =
+    "thank you, baby 🥹💗 i'll do my best to be better for us. mwa! <3";
+
+  for (let i = 0; i < 25; i++) {
+    setTimeout(makeHeart, i * 100);
+  }
+}
+
+function moveNo() {
+  const btn = document.getElementById("no");
+  const x = Math.random() * 100 - 50;
+  const y = Math.random() * 80 - 40;
+
+  btn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function makeHeart() {
+  const heart = document.createElement("span");
+  heart.className = "float";
+  heart.innerHTML = ["💗","💕","💖","🩷"][Math.floor(Math.random()*4)];
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (18 + Math.random() * 20) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}
+</script>
+
+</body>
+    </html>
+    
